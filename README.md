@@ -110,6 +110,12 @@ dumbdo/
 └── package.json   # Dependencies and scripts
 ```
 
+## Support the Project
+
+<a href="https://www.buymeacoffee.com/dumbware" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60">
+</a>
+
 ## Contributing
 
 This is meant to be a simple application. If you're writing complex code to solve a simple problem, you're probably doing it wrong. Keep it dumb, keep it simple. 
