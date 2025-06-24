@@ -385,10 +385,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const deleteBtn = li.querySelector('.delete-btn');
         deleteBtn.addEventListener('click', () => {
-            li.remove();
-            todos[currentList] = todos[currentList].filter(t => t !== todo);
-            saveTodos();
-            toastManager.show('Task deleted', 'error');
+            if (confirm(`Are you sure you want to delete "${todo.text}"?`)) {
+                li.remove();
+                todos[currentList] = todos[currentList].filter(t => t !== todo);
+                saveTodos();
+                toastManager.show('Task deleted', 'error');
+            }
         });
 
         // Add drag and drop event listeners for non-completed items
