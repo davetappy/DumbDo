@@ -81,7 +81,8 @@ button:hover {
     padding: 0.5rem;
     width: 40px;
     height: 40px;
-    display: flex;
+    display: none;
+/*    display: flex; */
     align-items: center;
     justify-content: center;
     border: 2px solid var(--text);
@@ -111,7 +112,7 @@ button:hover {
     padding: 0.5rem;
     width: 36px;
     height: 36px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     border: 1px solid #ff4444;
@@ -350,7 +351,7 @@ input:focus {
     h1 {
         font-size: 1.5rem;
     }
-    
+/*    
     .todo-form {
         flex-direction: column;
         align-items: center;
@@ -364,6 +365,7 @@ input:focus {
     .button-group button[type="submit"] {
         flex: 1;
     }
+*/
 }
 
 /* PIN Modal Styles */
@@ -503,6 +505,7 @@ input:focus {
 .list-selector-container {
     position: relative;
     min-width: 150px;
+    width: 100%;
 }
 
 .list-selector-container::after {
@@ -600,7 +603,7 @@ input:focus {
     padding: 0.25rem;
     margin-left: 0.5rem;
     cursor: pointer;
-    display: inline-flex;
+    display: none;
     align-items: center;
 }
 
