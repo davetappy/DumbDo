@@ -39,6 +39,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 0 2rem;
 }
 
 h1 {
@@ -51,7 +52,7 @@ button {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.25rem;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color var(--transition);
@@ -73,6 +74,7 @@ button:hover {
     background: #f44;
     color: white;
     border: 1px solid #ff4444;
+    padding: 0.5rem 1rem;
 }
 
 .clear-btn svg {
@@ -82,7 +84,7 @@ button:hover {
 }
 
 .clear-btn:hover {
-    background: rgba(255,68,68,0.1);
+    background: #f22;
 }
 
 .todo-form {
@@ -94,9 +96,9 @@ button:hover {
 
 input {
     flex: 1;
-    max-width: 400px;
+    max-width: 480px;
     padding: 0.75rem;
-    border: 1px solid var(--border);
+    border: 1px solid #666;
     border-radius: 8px;
     background: var(--container);
     color: var(--text);
@@ -300,11 +302,11 @@ input:focus {
     max-width: 500px;
     text-align: left;
     padding: 1rem 0;
-    margin: 1rem 0;
+    margin: 1rem 0 0; /* Removed margin-bottom */
     color: var(--text);
     opacity: 0.7;
     font-size: 0.9rem;
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
 }
 
 @media (max-width: 480px) {
@@ -424,9 +426,9 @@ input:focus {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Center flex items */
     width: 100%;
-    padding: 0 1rem;
+    margin: 0 auto; /* Center the block itself */
 }
 
 .list-buttons {
@@ -480,7 +482,7 @@ input:focus {
 
 
 #addList {
-    margin-left: 0.5rem;
+    margin-left: 0;
 }
 
 
@@ -514,7 +516,7 @@ input:focus {
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 0.4rem;
     padding-right: 24px;
     font-size: 0.9rem;
     cursor: pointer;
