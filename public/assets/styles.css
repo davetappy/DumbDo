@@ -458,6 +458,29 @@ input:focus {
     stroke: var(--primary);
 }
 
+#addList {
+    margin-left: 1rem;
+}
+
+#deleteList {
+    background: transparent;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+}
+
+#deleteList:hover {
+    background: rgba(255,68,68,0.1);
+    border-color: #ff4444; /* Keep border color consistent on hover */
+}
+
+#deleteList svg {
+    stroke: #ff4444;
+}
+
+#deleteList:hover svg {
+    stroke: #ff4444; /* Keep stroke color consistent on hover */
+}
+
 .list-selector-container {
     position: relative;
     min-width: 150px;

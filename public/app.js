@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renameListBtn.addEventListener('click', renameCurrentList);
+    deleteListBtn.addEventListener('click', () => deleteList(currentList));
     addListBtn.addEventListener('click', addNewList);
 
     // Enhanced fetch with auth headers
