@@ -1,23 +1,12 @@
 :root {
-    /* Light theme variables */
     --primary: #2196F3;
     --primary-hover: #1976D2;
-    --background: #f5f5f5;
-    --container: white;
-    --text: #333;
-    --border: #ccc;
-    --shadow: 0 2px 4px rgba(0,0,0,0.1);
-    --transition: 0.2s ease;
-    --success-status-bg: rgba(37, 99, 235, 0.6);
-    --danger-status-bg:rgba(220, 38, 38, 0.6);
-}
-
-[data-theme="dark"] {
     --background: #1a1a1a;
     --container: #2d2d2d;
     --text: white;
     --border: #404040;
     --shadow: 0 2px 4px rgba(0,0,0,0.2);
+    --transition: 0.2s ease;
     --success-status-bg: rgba(96, 165, 250, 0.5);
     --danger-status-bg:rgba(220, 38, 38, 0.5);
 }
@@ -72,34 +61,7 @@ button:hover {
     background: var(--primary-hover);
 }
 
-#themeToggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: transparent;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    width: 40px;
-    height: 40px;
-    display: none;
-/*    display: flex; */
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--text);
-    border-radius: 50%;
-}
 
-#themeToggle:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-#themeToggle svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--text);
-    fill: none;
-    stroke-width: 2;
-}
 
 .button-group {
     display: flex;
@@ -236,9 +198,7 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-[data-theme="dark"] .todo-item span:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
+
 
 .todo-item .edit-input {
     width: 100%;
@@ -443,13 +403,7 @@ input:focus {
     color: white;
 }
 
-[data-theme="dark"] .pin-input-container input.pin-input.has-value {
-    color: white;
-}
 
-[data-theme="light"] .pin-input-container input.pin-input.has-value {
-    color: white;
-}
 
 .pin-error {
     color: #ff4444;
@@ -636,16 +590,7 @@ input:focus {
         justify-content: center;
     }
     
-    header {
-        flex-direction: column;
-        gap: 1rem;
     }
-    
-    #themeToggle {
-        position: static;
-        margin-left: auto;
-    }
-}
 
 /* Login Page Styles */
 .login-page {
@@ -670,11 +615,7 @@ input:focus {
     margin: 2rem 0;
 }
 
-.login-page #themeToggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+
 
 .login-page h1 {
     font-size: 2.5rem;

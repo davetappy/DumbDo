@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoForm = document.getElementById('todoForm');
     const todoInput = document.getElementById('todoInput');
     const todoList = document.getElementById('todoList');
-    const themeToggle = document.getElementById('themeToggle');
-    const moonIcon = themeToggle.querySelector('.moon');
-    const sunIcon = themeToggle.querySelector('.sun');
     const toastContainer = document.getElementById('toast-container');
     const toastManager = new ToastManager(toastContainer);
     const pinModal = document.getElementById('pinModal');
@@ -255,24 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchWithAuth(url, options = {}) {
         return fetch(url, options);
     }
-
-    // Theme Management
-    function updateThemeIcons() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        moonIcon.style.display = isDark ? 'none' : 'block';
-        sunIcon.style.display = isDark ? 'block' : 'none';
-    }
-
-    // Initialize theme icons
-    updateThemeIcons();
-
-    themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const newTheme = isDark ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcons();
-    });
 
     // Todo Management
     async function loadTodos() {
