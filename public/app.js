@@ -114,12 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         sortedKeys.forEach(listId => {
             const item = document.createElement('div');
-            item.className = `list-item ${listId === 'List 1' ? 'list-1' : ''}`;
+            item.className = `list-item ${listId === 'List 1' ? 'list-1' : ''} ${listId === currentList ? 'current-list-item' : ''}`;
             item.dataset.value = listId;
             
             const nameSpan = document.createElement('span');
             nameSpan.textContent = listId;
             item.appendChild(nameSpan);
+            
+            if (listId === currentList) {
+                const indicator = document.createElement('div');
+                indicator.className = 'current-list-indicator';
+                item.prepend(indicator);
+            }
             
             
             
@@ -148,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchList(listId) {
         currentList = listId;
         listSelector.value = listId; // Update the native select value
+        updateListSelector(); // Re-render the list selector to update highlighting
         renderTodos();
     }
 
