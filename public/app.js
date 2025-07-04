@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pinModal = document.getElementById('pinModal');
     const pinInputs = [...document.querySelectorAll('.pin-input')];
     const pinError = document.getElementById('pinError');
-    const clearCompletedBtn = document.getElementById('clearCompleted');
     const listSelector = document.getElementById('listSelector');
     const renameListBtn = document.getElementById('renameList');
     const deleteListBtn = document.getElementById('deleteList');
@@ -455,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${endChar}`;
         });
     }
-
+   
     function renderTodos() {
         todoList.innerHTML = '';
         const currentTodos = todos[currentList] || [];
@@ -485,12 +484,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Add divider if there are both active and completed todos
-        if (activeTodos.length > 0 && completedTodos.length > 0) {
+//        if (activeTodos.length > 0 && completedTodos.length > 0) {
+
+        // Add divider if there are completed todos
+        if (completedTodos.length > 0) {
             const divider = document.createElement('li');
             divider.className = 'todo-divider';
-            divider.textContent = 'Completed';
+
+            // --- New: Create flex container for label and button ---
+            const dividerInner = document.createElement('div');
+            dividerInner.className = 'divider-inner';
+
+            // Label on the left
+            const dividerLabel = document.createElement('span');
+            dividerLabel.textContent = 'Completed';
+            dividerInner.appendChild(dividerLabel);
+
+            // Button on the right
+            const clearCompletedBtn = document.createElement('button');
+            clearCompletedBtn.type = 'button';
+            clearCompletedBtn.className = 'clear-btn';
+            clearCompletedBtn.setAttribute('aria-label', 'Delete completed tasks');
+            clearCompletedBtn.innerHTML = `Clear all`;
+            clearCompletedBtn.addEventListener('click', () => {
+                const currentTodos = todos[currentList];
+                const completedCount = currentTodos.filter(todo => todo.completed).length;
+
+                if (completedCount === 0) {
+                    toastManager.show('No completed tasks to clear');
+                    return;
+                }
+
+                if (confirm(`Are you sure you want to delete ${completedCount} completed task${completedCount === 1 ? '' : 's'}?`)) {
+                    todos[currentList] = currentTodos.filter(todo => !todo.completed);
+                    renderTodos();
+                    saveTodos();
+                    toastManager.show(`Cleared ${completedCount} completed task${completedCount === 1 ? '' : 's'}`);
+                }
+            });
+
+            dividerInner.appendChild(clearCompletedBtn);
+            divider.appendChild(dividerInner);
             todoList.appendChild(divider);
         }
+    
         
         // Render completed todos
         completedTodos.forEach(todo => {
