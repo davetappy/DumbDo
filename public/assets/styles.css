@@ -269,14 +269,20 @@ input:focus {
     padding: 0.25rem 0.5rem;
     border: 1px solid var(--border);
     justify-self: end;
+    stroke: var(--text);
 }
 
 .delete-btn:hover {
     background: rgba(255,68,68,0.1);
     color: #ff4444;
     border-color: #ff4444;
+    stroke: #f44;
 }
 
+.delete-btn svg {
+    stroke-width: 2;
+    fill: none;
+}
 
 
 .toast-container {
