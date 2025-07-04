@@ -454,30 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${endChar}`;
         });
     }
-
-    function renderTodos() {
-        todoList.innerHTML = '';
-        const currentTodos = todos[currentList] || [];
-        
-        // Separate todos into active and completed
-        const activeTodos = currentTodos.filter(todo => !todo.completed);
-        const completedTodos = currentTodos.filter(todo => todo.completed);
-        
-        // Create a container for active todos
-        const activeTodosContainer = document.createElement('div');
-        activeTodosContainer.className = 'active-todos';
-        activeTodosContainer.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            const draggingItem = document.querySelector('.dragging');
-            if (draggingItem) {
-                const items = [...activeTodosContainer.querySelectorAll('.todo-item')];
-                if (items.length === 0) {
-                    activeTodosContainer.appendChild(draggingItem);
-                }
-            }
-        });
-        todoList.appendChild(activeTodosContainer);
-        
+   
     function renderTodos() {
         todoList.innerHTML = '';
         const currentTodos = todos[currentList] || [];
