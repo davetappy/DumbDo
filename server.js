@@ -252,7 +252,7 @@ async function initDataFile() {
     try {
         await fs.access(DATA_FILE);
     } catch {
-        await fs.writeFile(DATA_FILE, JSON.stringify({}));
+        await fs.writeFile(DATA_FILE, JSON.stringify({"List 1": []}));
     }
     
     console.log('Todo list stored at:', DATA_FILE);

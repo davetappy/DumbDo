@@ -68,10 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // List Management
     function initializeLists(data) {
+        console.log('initializeLists: Received data:', data);
         if (!data || Object.keys(data).length === 0) {
             // Only create List 1 when there are no lists at all
             todos = { 'List 1': [] };
             currentList = 'List 1';
+            saveTodos();
         } else {
             // Convert only numeric keys, preserve custom names
             const convertedData = {};
@@ -88,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
             todos = convertedData;
             currentList = Object.keys(convertedData)[0];
         }
+        console.log('initializeLists: todos after init:', todos);
+        console.log('initializeLists: currentList after init:', currentList);
         
         updateListSelector();
         renderTodos();
@@ -547,24 +551,6 @@ document.addEventListener('DOMContentLoaded', () => {
             saveTodos();
             todoInput.value = '';
             toastManager.show('Task added');
-        }
-    });
-
-    // Clear completed tasks
-    clearCompletedBtn.addEventListener('click', () => {
-        const currentTodos = todos[currentList];
-        const completedCount = currentTodos.filter(todo => todo.completed).length;
-        
-        if (completedCount === 0) {
-            toastManager.show('No completed tasks to clear');
-            return;
-        }
-        
-        if (confirm(`Are you sure you want to delete ${completedCount} completed task${completedCount === 1 ? '' : 's'}?`)) {
-            todos[currentList] = currentTodos.filter(todo => !todo.completed);
-            renderTodos();
-            saveTodos();
-            toastManager.show(`Cleared ${completedCount} completed task${completedCount === 1 ? '' : 's'}`);
         }
     });
 
