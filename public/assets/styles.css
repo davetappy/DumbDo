@@ -458,14 +458,8 @@ input:focus {
     stroke: var(--primary);
 }
 
-#addList {
-    margin-left: 1rem;
-}
-
 #deleteList {
-    background: transparent;
-    color: #ff4444;
-    border: 1px solid #ff4444;
+    /* Inherit default icon-btn styles */
 }
 
 #deleteList:hover {
@@ -474,12 +468,18 @@ input:focus {
 }
 
 #deleteList svg {
-    stroke: #ff4444;
+    stroke: var(--text);
 }
 
 #deleteList:hover svg {
     stroke: #ff4444; /* Keep stroke color consistent on hover */
 }
+
+#addList {
+    margin-left: 0.5rem;
+}
+
+
 
 .list-selector-container {
     position: relative;
