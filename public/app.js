@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (text) {
             const todo = { text, completed: false };
-            todos[currentList].push(todo);
+            todos[currentList].unshift(todo);
             renderTodos();
             saveTodos();
             todoInput.value = '';
