@@ -502,11 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearCompletedBtn.type = 'button';
             clearCompletedBtn.className = 'clear-btn';
             clearCompletedBtn.setAttribute('aria-label', 'Delete completed tasks');
-            clearCompletedBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" width="16" height="16">
-                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                </svg>
-            `;
+            clearCompletedBtn.innerHTML = `Clear all`;
             clearCompletedBtn.addEventListener('click', () => {
                 const currentTodos = todos[currentList];
                 const completedCount = currentTodos.filter(todo => todo.completed).length;
