@@ -108,12 +108,8 @@ button:hover {
 }
 
 .clear-btn {
-    background: transparent;
-    padding: 0.5rem;
-    width: 36px;
-    height: 36px;
-    align-items: center;
-    justify-content: center;
+    background: #f44;
+    color: white;
     border: 1px solid #ff4444;
 }
 

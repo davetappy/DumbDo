@@ -484,7 +484,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Add divider if there are both active and completed todos
-        if (activeTodos.length > 0 && completedTodos.length > 0) {
+//        if (activeTodos.length > 0 && completedTodos.length > 0) {
+
+        // Add divider if there are completed todos
+        if (completedTodos.length > 0) {
             const divider = document.createElement('li');
             divider.className = 'todo-divider';
 
