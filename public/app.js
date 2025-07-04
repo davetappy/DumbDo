@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pinModal = document.getElementById('pinModal');
     const pinInputs = [...document.querySelectorAll('.pin-input')];
     const pinError = document.getElementById('pinError');
-    const clearCompletedBtn = document.getElementById('clearCompleted');
     const listSelector = document.getElementById('listSelector');
     const renameListBtn = document.getElementById('renameList');
     const deleteListBtn = document.getElementById('deleteList');
@@ -479,6 +478,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         todoList.appendChild(activeTodosContainer);
         
+    function renderTodos() {
+        todoList.innerHTML = '';
+        const currentTodos = todos[currentList] || [];
+        
+        // Separate todos into active and completed
+        const activeTodos = currentTodos.filter(todo => !todo.completed);
+        const completedTodos = currentTodos.filter(todo => todo.completed);
+        
+        // Create a container for active todos
+        const activeTodosContainer = document.createElement('div');
+        activeTodosContainer.className = 'active-todos';
+        activeTodosContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const draggingItem = document.querySelector('.dragging');
+            if (draggingItem) {
+                const items = [...activeTodosContainer.querySelectorAll('.todo-item')];
+                if (items.length === 0) {
+                    activeTodosContainer.appendChild(draggingItem);
+                }
+            }
+        });
+        todoList.appendChild(activeTodosContainer);
+        
         // Render active todos
         activeTodos.forEach(todo => {
             activeTodosContainer.appendChild(createTodoElement(todo));
@@ -488,9 +510,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeTodos.length > 0 && completedTodos.length > 0) {
             const divider = document.createElement('li');
             divider.className = 'todo-divider';
-            divider.textContent = 'Completed';
+
+            // --- New: Create flex container for label and button ---
+            const dividerInner = document.createElement('div');
+            dividerInner.className = 'divider-inner';
+
+            // Label on the left
+            const dividerLabel = document.createElement('span');
+            dividerLabel.textContent = 'Completed';
+            dividerInner.appendChild(dividerLabel);
+
+            // Button on the right
+            const clearCompletedBtn = document.createElement('button');
+            clearCompletedBtn.type = 'button';
+            clearCompletedBtn.className = 'clear-btn';
+            clearCompletedBtn.setAttribute('aria-label', 'Delete completed tasks');
+            clearCompletedBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+            `;
+            clearCompletedBtn.addEventListener('click', () => {
+                const currentTodos = todos[currentList];
+                const completedCount = currentTodos.filter(todo => todo.completed).length;
+
+                if (completedCount === 0) {
+                    toastManager.show('No completed tasks to clear');
+                    return;
+                }
+
+                if (confirm(`Are you sure you want to delete ${completedCount} completed task${completedCount === 1 ? '' : 's'}?`)) {
+                    todos[currentList] = currentTodos.filter(todo => !todo.completed);
+                    renderTodos();
+                    saveTodos();
+                    toastManager.show(`Cleared ${completedCount} completed task${completedCount === 1 ? '' : 's'}`);
+                }
+            });
+
+            dividerInner.appendChild(clearCompletedBtn);
+            divider.appendChild(dividerInner);
             todoList.appendChild(divider);
         }
+    
         
         // Render completed todos
         completedTodos.forEach(todo => {
