@@ -39,6 +39,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 0 2rem;
 }
 
 h1 {
@@ -94,7 +95,7 @@ button:hover {
 
 input {
     flex: 1;
-    max-width: 400px;
+    max-width: 480px;
     padding: 0.75rem;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -424,9 +425,9 @@ input:focus {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Center flex items */
     width: 100%;
-    padding: 0 1rem;
+    margin: 0 auto; /* Center the block itself */
 }
 
 .list-buttons {
@@ -480,7 +481,7 @@ input:focus {
 
 
 #addList {
-    margin-left: 0.5rem;
+    margin-left: 0;
 }
 
 
