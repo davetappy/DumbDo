@@ -121,22 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nameSpan.textContent = listId;
             item.appendChild(nameSpan);
             
-            if (listId !== 'List 1') {
-                const deleteBtn = document.createElement('button');
-                deleteBtn.type = 'button';
-                deleteBtn.className = 'delete-btn';
-                deleteBtn.setAttribute('aria-label', `Delete ${listId}`);
-                deleteBtn.innerHTML = `
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    </svg>
-                `;
-                deleteBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    deleteList(listId);
-                });
-                item.appendChild(deleteBtn);
-            }
+            
             
             item.addEventListener('click', () => {
                 if (listId !== currentList) {
