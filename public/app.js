@@ -121,6 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nameSpan.textContent = listId;
             item.appendChild(nameSpan);
             
+            if (listId === currentList) {
+                const indicator = document.createElement('div');
+                indicator.className = 'current-list-indicator';
+                item.prepend(indicator);
+            }
+            
             
             
             item.addEventListener('click', () => {
@@ -148,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchList(listId) {
         currentList = listId;
         listSelector.value = listId; // Update the native select value
+        updateListSelector(); // Re-render the list selector to update highlighting
         renderTodos();
     }
 
