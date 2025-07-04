@@ -461,6 +461,23 @@ input:focus {
 }
 
 #deleteList {
+    /* Default icon-btn styling */
+}
+
+#deleteList:hover {
+    background: rgba(255,68,68,0.1);
+    border-color: #ff4444;
+}
+
+#deleteList svg {
+    /* Default icon-btn svg styling */
+}
+
+#deleteList:hover svg {
+    stroke: #ff4444;
+}
+
+#deleteList {
     /* Inherit default icon-btn styles */
 }
 

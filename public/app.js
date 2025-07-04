@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         sortedKeys.forEach(listId => {
             const item = document.createElement('div');
-            item.className = `list-item ${listId === 'List 1' ? 'list-1' : ''}`;
+            item.className = `list-item ${listId === 'List 1' ? 'list-1' : ''} ${listId === currentList ? 'current-list-item' : ''}`;
             item.dataset.value = listId;
             
             const nameSpan = document.createElement('span');
