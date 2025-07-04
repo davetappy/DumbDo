@@ -231,14 +231,16 @@ input:focus {
 .delete-btn {
     margin-left: auto;
     background: transparent;
-    color: #ff4444;
+    color: var(--text);
     padding: 0.25rem 0.5rem;
-    border: 1px solid #ff4444;
+    border: 1px solid var(--border);
     justify-self: end;
 }
 
 .delete-btn:hover {
     background: rgba(255,68,68,0.1);
+    color: #ff4444;
+    border-color: #ff4444;
 }
 
 /* .toast-container {
@@ -457,6 +459,29 @@ input:focus {
 .icon-btn:hover svg {
     stroke: var(--primary);
 }
+
+#deleteList {
+    /* Inherit default icon-btn styles */
+}
+
+#deleteList:hover {
+    background: rgba(255,68,68,0.1);
+    border-color: #ff4444; /* Keep border color consistent on hover */
+}
+
+#deleteList svg {
+    stroke: var(--text);
+}
+
+#deleteList:hover svg {
+    stroke: #ff4444; /* Keep stroke color consistent on hover */
+}
+
+#addList {
+    margin-left: 0.5rem;
+}
+
+
 
 .list-selector-container {
     position: relative;
