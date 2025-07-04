@@ -3,28 +3,7 @@ const loginForm = document.getElementById('loginForm');
 const pinError = document.getElementById('pinError');
 const attemptsRemaining = document.getElementById('attemptsRemaining');
 const lockoutNotice = document.getElementById('lockoutNotice');
-const themeToggle = document.getElementById('themeToggle');
-const moonIcon = themeToggle.querySelector('.moon');
-const sunIcon = themeToggle.querySelector('.sun');
 let pinInputs = [];
-
-// Theme Management
-function updateThemeIcons() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    moonIcon.style.display = isDark ? 'none' : 'block';
-    sunIcon.style.display = isDark ? 'block' : 'none';
-}
-
-// Initialize theme icons
-updateThemeIcons();
-
-themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcons();
-});
 
 // Check PIN status periodically
 async function checkPinStatus() {
