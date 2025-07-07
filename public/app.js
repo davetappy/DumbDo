@@ -293,7 +293,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <input type="checkbox" ${todo.completed ? 'checked' : ''}>
             </div>
             <span class="todo-text">${linkifyText(todo.text)}</span>
-            <button class="delete-btn" aria-label="Delete todo">×</button>
+            <button class="delete-btn icon-button icon-button--danger" aria-label="Delete todo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         `;
 
         const checkbox = li.querySelector('input');
