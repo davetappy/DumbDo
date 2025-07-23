@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearCompletedBtn.type = 'button';
             clearCompletedBtn.className = 'clear-btn';
             clearCompletedBtn.setAttribute('aria-label', 'Delete completed tasks');
-            clearCompletedBtn.innerHTML = `Clear all`;
+            clearCompletedBtn.innerHTML = `Clear completed`;
             clearCompletedBtn.addEventListener('click', () => {
                 const currentTodos = todos[currentList];
                 const completedCount = currentTodos.filter(todo => todo.completed).length;
